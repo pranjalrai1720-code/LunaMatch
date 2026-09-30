@@ -1,0 +1,12 @@
+=== Registration Result: P6_ohrc_nac ===
+Status: FAILED (FAILED)
+Candidate Matches: 0
+Inliers: 0 (Ratio: 0.0%)
+RMSE (Fixed Pixels): None px
+RMSE (Moving Pixels): None px
+RMSE (Metres): None m
+Grid Coverage: 0.0%
+Estimated Scale: None
+Estimated Rotation: None°
+Runtime: 209.57s
+Reasons / Limitations: Inlier count 0 < threshold 15; Inlier ratio 0.000 < threshold 0.10; RMSE 999.00 px > threshold 5.0 px; Coverage 0.00 < threshold 0.10; Extreme solar incidence: NAC M1171523545LC solar incidence is 91.05° (Sun elevation -1.05°); entire overlap swath (lines 18000-43000) was in complete lunar darkness with 0 sunlit features and DN values at sensor noise floor (mean ~29 DN, std ~15 DN). Optical feature matching is physically blocked.

@@ -1,0 +1,85 @@
+# SIH 26166: Chandrayaan-2 Image Registration Configuration
+# Milestone 1: Baseline Registration Pipeline
+
+# Paths
+datasets:
+  ohrc:
+    image_path: "data/ohrc/image/ch2_ohr_ncp_20220914T0835371412_d_img_d32.img"
+    label_path: "data/ohrc/image/ch2_ohr_ncp_20220914T0835371412_d_img_d32.xml"
+    geometry_csv: "data/ohrc/geometry/ch2_ohr_ncp_20220914T0835371412_g_grd_d32.csv"
+    geometry_xml: "data/ohrc/geometry/ch2_ohr_ncp_20220914T0835371412_g_grd_d32.xml"
+    resolution_m: 0.32
+  tmc:
+    image_path: "data/tmc/image/ch2_tmc_ncn_20191125T0749024692_d_img_d18.img"
+    label_path: "data/tmc/image/ch2_tmc_ncn_20191125T0749024692_d_img_d18.xml"
+    geometry_csv: "data/tmc/geometry/ch2_tmc_ncn_20191125T0749024692_g_grd_d18.csv"
+    geometry_xml: "data/tmc/geometry/ch2_tmc_ncn_20191125T0749024692_g_grd_d18.xml"
+    resolution_m: 3.96
+  nac:
+    image_path: "data/nac/image/m1171523545lc.img"
+    label_path: "data/nac/image/m1171523545lc.xml"
+    resolution_m: 1.107
+    header_offset: 5064
+
+outputs:
+  synthetic_dir: "out/synthetic"
+  p6_nac_dir: "out/P6_ohrc_nac"
+  p1_tmc_dir: "out/P1_ohrc_tmc"
+
+# Preprocessing
+preprocessing:
+  representations: ["local_norm", "grad_mag"] # Available: raw, local_norm, grad_mag
+  clahe_clip_limit: 3.0
+  clahe_tile_grid_size: [8, 8]
+  local_norm_kernel_size: 25
+  percentile_min: 1.0
+  percentile_max: 99.0
+
+# SIFT feature detection
+sift:
+  nfeatures: 8000
+  nOctaveLayers: 3
+  contrastThreshold: 0.03
+  edgeThreshold: 10.0
+  sigma: 1.6
+  ratio_threshold: 0.75
+  mutual_match: true
+
+# Robust transform estimation
+robust_estimation:
+  method: "USAC_MAGSAC" # USAC_MAGSAC, RANSAC, or LMEDS
+  model: "affine"       # similarity or affine
+  reproj_threshold_px: 3.0
+  max_iterations: 10000
+  confidence: 0.999
+  min_inliers: 15
+  min_inlier_ratio: 0.15
+
+# Geometric prior gating
+prior_gating:
+  scale_tolerance: 0.35      # max fractional deviation from expected scale ratio
+  rotation_tolerance_deg: 35.0 # max degrees deviation from expected relative rotation
+  candidate_rotations: [0.0, 90.0, 180.0, 270.0]
+
+# Quality and confidence classification thresholds
+confidence_thresholds:
+  high:
+    min_inliers: 40
+    min_inlier_ratio: 0.25
+    max_rmse_fix_px: 2.0
+    min_coverage: 0.30
+  low:
+    min_inliers: 15
+    min_inlier_ratio: 0.10
+    max_rmse_fix_px: 5.0
+    min_coverage: 0.10
+
+# Uniformity metrics
+uniformity:
+  grid_rows: 8
+  grid_cols: 8
+
+# Independent Check Points (ICP) spatial hold-out
+validation:
+  holdout_ratio: 0.20
+  random_seed: 42

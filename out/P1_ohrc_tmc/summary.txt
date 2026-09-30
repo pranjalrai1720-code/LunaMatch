@@ -1,0 +1,12 @@
+=== Registration Result: P1_ohrc_tmc ===
+Status: FAILED (FAILED)
+Candidate Matches: 3
+Inliers: 0 (Ratio: 0.0%)
+RMSE (Fixed Pixels): None px
+RMSE (Moving Pixels): None px
+RMSE (Metres): None m
+Grid Coverage: 0.0%
+Estimated Scale: None
+Estimated Rotation: None°
+Runtime: 5.96s
+Reasons / Limitations: Inlier count 0 < threshold 15; Inlier ratio 0.000 < threshold 0.10; RMSE 999.00 px > threshold 5.0 px; Coverage 0.00 < threshold 0.10; Extreme illumination disparity: Solar azimuth difference of 162.2° (OHRC 89.4° vs TMC 251.6°) and solar elevation disparity (OHRC 8.4° grazing morning vs TMC 53.1° high midday). Opposite shadow casting and severe contrast inversion exceed SIFT invariant descriptor repeatability.

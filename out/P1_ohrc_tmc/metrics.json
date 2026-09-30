@@ -1,0 +1,40 @@
+{
+  "pair_name": "P1_ohrc_tmc",
+  "moving_instrument": "Chandrayaan-2 OHRC",
+  "fixed_instrument": "Chandrayaan-2 Orbiter TMC2 Experiment",
+  "moving_filename": "ch2_ohr_ncp_20220914T0835371412_d_img_d32.img",
+  "fixed_filename": "ch2_tmc_ncn_20191125T0749024692_d_img_d18.img",
+  "moving_dimensions": [
+    6384,
+    1000
+  ],
+  "fixed_dimensions": [
+    5300,
+    1700
+  ],
+  "images_loaded_successfully": true,
+  "registration_attempted": true,
+  "valid_transform_found": false,
+  "registration_status": "FAILED",
+  "candidate_matches": 3,
+  "inlier_count": 0,
+  "inlier_ratio": 0.0,
+  "rmse_fix_px": null,
+  "rmse_mov_px": null,
+  "rmse_metres": null,
+  "grid_coverage": 0.0,
+  "spatial_entropy": 0.0,
+  "hull_ratio": 0.0,
+  "estimated_scale": null,
+  "estimated_rotation_deg": null,
+  "transformation_type": "affine_partial_similarity",
+  "runtime_seconds": 5.96,
+  "confidence": "FAILED",
+  "confidence_reasons": [
+    "Inlier count 0 < threshold 15",
+    "Inlier ratio 0.000 < threshold 0.10",
+    "RMSE 999.00 px > threshold 5.0 px",
+    "Coverage 0.00 < threshold 0.10",
+    "Extreme illumination disparity: Solar azimuth difference of 162.2\u00b0 (OHRC 89.4\u00b0 vs TMC 251.6\u00b0) and solar elevation disparity (OHRC 8.4\u00b0 grazing morning vs TMC 53.1\u00b0 high midday). Opposite shadow casting and severe contrast inversion exceed SIFT invariant descriptor repeatability."
+  ]
+}
